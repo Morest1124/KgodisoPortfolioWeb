@@ -15,6 +15,7 @@ import {
   Zap,
 } from "lucide-react";
 import TechTree from "./TechTree";
+import "./Hero.css";
 
 // --- Static Data Configuration ---
 const DATA = {
@@ -23,33 +24,6 @@ const DATA = {
   tagline:
     "Building scalable applications with a focus on performance and robust infrastructure.",
   resumeUrl: "/placeholder-resume.pdf", // Placeholder URL for the resume download
-  skills: [
-    {
-      category: "Core Languages",
-      icon: Code,
-      items: ["Python", "JavaScript", "Java", "TypeScript"],
-    },
-    {
-      category: "Frontend & UI",
-      icon: LayoutGrid,
-      items: ["React.js", "HTML/CSS", "Tailwind CSS", "Bootstrap"],
-    },
-    {
-      category: "Backend & APIs",
-      icon: Cpu,
-      items: ["Node.js", "Express.js", "Spring Boot", "Fast API", "Flask API"],
-    },
-    {
-      category: "Databases",
-      icon: Database,
-      items: ["PostgreSQL", "MySQL", "SQL", "MongoDB (NoSQL)"],
-    },
-    {
-      category: "Cloud & DevOps",
-      icon: Cloud,
-      items: ["AWS", "Docker", "Git", "CI/CD"],
-    },
-  ],
   services: [
     {
       title: "Full-Stack Development",
@@ -97,57 +71,7 @@ const DATA = {
   ],
 };
 
-// --- Tech Stack Icon Data (SVG Paths and Colors) ---
-// IMPORTANT: The React SVG path was replaced with a minimal circle SVG to prevent continuous compilation errors due to string truncation.
-const TECH_ICONS = {
-  "React.js": {
-    color: "#61DAFB",
-    svg: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z",
-  },
-  // Placeholder icons for other skills using generic shapes/letters for visual presence
-  Python: { color: "#3771A5", svg: "M12 0L6 10l6 10 6-10z" },
-  JavaScript: { color: "#F7DF1E", svg: "M10 0L0 20h20z" },
-  Java: { color: "#E95325", svg: "M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12z" },
-  TypeScript: { color: "#3178C6", svg: "M0 20h20V0z" },
-  "HTML/CSS": { color: "#E44D26", svg: "M0 0h24v24H0z" },
-  "Tailwind CSS": { color: "#06B6D4", svg: "M0 0h24v24H0z" },
-  Bootstrap: { color: "#7952B3", svg: "M0 0h24v24H0z" },
-  "Node.js": { color: "#339933", svg: "M0 0h24v24H0z" },
-  "Express.js": { color: "#FFFFFF", svg: "M0 0h24v24H0z" },
-  "Spring Boot": { color: "#6DB33F", svg: "M0 0h24v24H0z" },
-  "Fast API": { color: "#009688", svg: "M0 0h24v24H0z" },
-  "Flask API": { color: "#000000", svg: "M0 0h24v24H0z" },
-  PostgreSQL: { color: "#336791", svg: "M0 0h24v24H0z" },
-  MySQL: { color: "#4479A1", svg: "M0 0h24v24H0z" },
-  SQL: { color: "#F29111", svg: "M0 0h24v24H0z" },
-  "MongoDB (NoSQL)": { color: "#47A248", svg: "M0 0h24v24H0z" },
-  AWS: { color: "#FF9900", svg: "M0 0h24v24H0z" },
-  Docker: { color: "#2496ED", svg: "M0 0h24v24H0z" },
-  Git: { color: "#F05032", svg: "M0 0h24v24H0z" },
-  "CI/CD": { color: "#1E40AF", svg: "M0 0h24v24H0z" },
-};
-
 // --- Reusable Components ---
-
-// Component for rendering skill icons using inline SVG paths
-const TechIcon = ({ skillName }) => {
-  const iconData = TECH_ICONS[skillName];
-  const defaultIcon = { color: "#FFFFFF", svg: "M0 0h24v24H0z" }; // Default to white square
-  const { color, svg } = iconData || defaultIcon;
-
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill={color}
-      className="w-8 h-8 transition duration-300 group-hover:scale-110"
-      style={{ minWidth: "2rem" }}
-    >
-      <title>{skillName}</title>
-      <path d={svg} />
-    </svg>
-  );
-};
 
 const SkillIcon = ({ icon: LucideIcon, title, items }) => (
   <div className="bg-gray-800 p-6 rounded-xl shadow-lg transition duration-500 transform hover:scale-[1.02] border border-gray-700 hover:border-emerald-500/80 group">
@@ -162,12 +86,6 @@ const SkillIcon = ({ icon: LucideIcon, title, items }) => (
           key={index}
           className="flex items-center bg-gray-700/50 px-3 py-1 rounded-full text-xs font-medium hover:bg-emerald-800 transition duration-300"
         >
-          {/* Render the specific technology icon if available */}
-          {TECH_ICONS[item] ? (
-            <TechIcon skillName={item} />
-          ) : (
-            <Zap className="w-3 h-3 text-emerald-600 mr-1" />
-          )}
           <span className="ml-2 text-gray-300">{item}</span>
         </li>
       ))}
@@ -209,7 +127,7 @@ const PageSection = ({ id, children, className = "" }) => (
 );
 
 const HomePage = () => (
-  <PageSection id="home" className="bg-gray-900">
+  <PageSection id="home" className="hero-container">
     <div className="max-w-6xl mx-auto text-center px-4">
       <p className="text-xl text-emerald-400 font-medium mb-3">
         Hello, I'm {DATA.name}
@@ -232,26 +150,24 @@ const HomePage = () => (
 
 const AboutPage = () => (
   <PageSection id="about" className="bg-gray-800">
-    <div className="max-w-7xl mx-auto px-4 sm:px-8">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 border-b-4 border-emerald-500/50 inline-block pb-1">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-12">
         About Me & Skills
       </h2>
-      <div className="mt-10 flex flex-col items-center justify-center">
-        <div className="w-full max-w-2xl">
-          <div className="w-full aspect-square bg-gray-700 rounded-xl mb-6 flex items-center justify-center text-gray-500 text-lg shadow-xl max-w-sm mx-auto">
-            <User className="w-16 h-16 text-emerald-500" />
-          </div>
-          <h3 className="text-2xl font-bold text-white mb-3 text-center">
-            A Focus on Scalability
-          </h3>
-          <p className="text-gray-400 text-center">
-            I thrive on creating solutions that are not just functional, but
-            also highly scalable and maintainable. My experience spans the
-            entire development lifecycle, ensuring quality from initial design
-            to final deployment on AWS.
-          </p>
+      <div className="flex flex-col items-center text-center">
+        <div className="w-48 h-48 bg-gray-700 rounded-full mb-6 flex items-center justify-center text-gray-500 text-lg shadow-xl">
+          <User className="w-24 h-24 text-emerald-500" />
         </div>
-        <div className="mt-12 w-full">
+        <h3 className="text-3xl font-bold text-white mb-3">
+          A Focus on Scalability
+        </h3>
+        <p className="text-gray-400 max-w-md mb-12">
+          I thrive on creating solutions that are not just functional, but
+          also highly scalable and maintainable. My experience spans the
+          entire development lifecycle, ensuring quality from initial design
+          to final deployment on AWS.
+        </p>
+        <div className="w-full">
           <TechTree />
         </div>
       </div>
@@ -261,15 +177,15 @@ const AboutPage = () => (
 
 const ServicesPage = () => (
   <PageSection id="services" className="bg-gray-900">
-    <div className="max-w-7xl mx-auto px-4 sm:px-8">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 border-b-4 border-emerald-500/50 inline-block pb-1">
+    <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4">
         Services
       </h2>
       <p className="text-xl text-gray-300 mt-4 mb-12">
         Solutions designed for modern digital challenges.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8">
         {DATA.services.map((service, index) => (
           <ServiceCard
             key={index}
