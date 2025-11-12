@@ -26,34 +26,37 @@ import {
   SiPostgresql,
   SiMysql,
   SiMongodb,
+  SiKubernetes,
+  SiAmazon,
 } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io";
 
+// Use five categories (Languages, Frontend, Backend, Database, Cloud & DevOps) and render responsively
 const skills = [
   {
-    category: "Core Languages",
+    category: "Languages",
     icon: FaCode,
-    items: ["Python", "JavaScript", "Java", "TypeScript"],
+    items: ["Python", "JavaScript", "Java"],
   },
   {
-    category: "Frontend & UI",
+    category: "Frontend",
     icon: FaReact,
-    items: ["React.js", "HTML/CSS", "Tailwind CSS", "Bootstrap"],
+    items: ["React.js", "HTML/CSS", "Tailwind CSS", "Bootstrap", "TypeScript"],
   },
   {
-    category: "Backend & APIs",
+    category: "Backend",
     icon: FaServer,
     items: ["Node.js", "Express.js", "Spring Boot", "Fast API", "Flask API"],
   },
   {
-    category: "Databases",
+    category: "Database",
     icon: FaDatabase,
-    items: ["PostgreSQL", "MySQL", "SQL", "MongoDB (NoSQL)"],
+    items: ["PostgreSQL", "MySQL", "SQL"],
   },
   {
     category: "Cloud & DevOps",
     icon: FaCloud,
-    items: ["AWS", "Docker", "Git", "CI/CD"],
+    items: ["AWS", "EC2", "S3", "DynamoDB", "Lambda", "Docker", "Kubernetes"],
   },
 ];
 
@@ -79,6 +82,12 @@ const TECH_ICONS = {
   Docker: { component: FaDocker, color: "#2496ED" },
   Git: { component: FaGitAlt, color: "#F05032" },
   "CI/CD": { component: FaGitAlt, color: "#1E40AF" },
+  Kubernetes: { component: SiKubernetes, color: "#326CE5" },
+  S3: { component: FaAws, color: "#FF9900" },
+  EC2: { component: FaAws, color: "#FF9900" },
+  DynamoDB: { component: SiAmazon, color: "#527FFF" },
+  Lambda: { component: FaAws, color: "#FF9900" },
+  Serverless: { component: FaCloud, color: "#9AE6B4" },
 };
 
 const TechTree = () => {

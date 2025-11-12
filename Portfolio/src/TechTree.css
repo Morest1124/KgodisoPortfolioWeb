@@ -24,8 +24,15 @@
 .tech-tree-container {
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  background-color: #1a202c;
+  padding: 4rem 2rem;
+  width: 100%;
+  /* Gradient that opposes the hero background gradient (reversed colors and angle) */
+  background: linear-gradient(45deg, #23d5ab, #23a6d5, #e73c7e, #ee7752);
+  background-size: 400% 400%;
+  animation: gradientOpp 15s ease infinite reverse;
+  /* a subtle dark overlay to keep tech tree content readable */
+  background-blend-mode: multiply;
+  background-color: rgba(12, 18, 28, 0.65);
 }
 
 .tech-tree {
@@ -33,7 +40,7 @@
   flex-direction: column; /* force a single vertical column layout */
   align-items: center; /* center the whole tree inside the container */
   width: 100%;
-  max-width: 760px; /* keep it readable in one column */
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -178,6 +185,19 @@
   }
 }
 
+/* Opposing gradient animation (moves opposite to hero) */
+@keyframes gradientOpp {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Staggered animations */
 .tree-branch:nth-child(1) {
   animation-delay: 0.2s;
@@ -222,5 +242,43 @@
 }
 .tree-leaf:nth-child(5) {
   animation-delay: 2s;
+}
+
+/* On wider screens show 5 columns (one per category) */
+@media (min-width: 1024px) {
+  .tech-tree {
+    max-width: 100%;
+  }
+
+  .tree-branches {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem 1rem;
+    align-items: start;
+  }
+
+  .tree-branch {
+    align-items: center;
+    margin: 0;
+  }
+
+  /* place the branch title centered */
+  .tree-node-content {
+    justify-content: center;
+  }
+
+  .tree-leaves {
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  /* change leaf connector to a small vertical line above each leaf */
+  .tree-leaf::before {
+    left: 50%;
+    top: -0.8rem;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 0.8rem;
+  }
 }
 

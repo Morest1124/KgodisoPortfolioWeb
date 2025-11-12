@@ -129,7 +129,7 @@ const PageSection = ({ id, children, className = "" }) => (
 const HomePage = () => (
   <PageSection id="home" className="hero-container">
     <div className="max-w-6xl mx-auto text-center px-4">
-      <p className="text-xl text-emerald-400 font-medium mb-3">
+      <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-emerald-400 font-medium mb-3">
         Hello, I'm {DATA.name}
       </p>
       <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 leading-tight">
@@ -150,7 +150,7 @@ const HomePage = () => (
 
 const AboutPage = () => (
   <PageSection id="about" className="bg-gray-800">
-    <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+    <div className="max-w-full mx-auto px-4 sm:px-8 text-center">
       <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-12">
         About Me & Skills
       </h2>
@@ -161,11 +161,14 @@ const AboutPage = () => (
         <h3 className="text-3xl font-bold text-white mb-3">
           A Focus on Scalability
         </h3>
-        <p className="text-gray-400 max-w-md mb-12">
-          I thrive on creating solutions that are not just functional, but
-          also highly scalable and maintainable. My experience spans the
-          entire development lifecycle, ensuring quality from initial design
-          to final deployment on AWS.
+        <p className="text-gray-400 max-w-2xl mb-12">
+          I possess expertise in multiple programming languages, including
+          Python, JavaScript, and Java. My web development skills encompass
+          HTML, CSS, and proficiency in Tailwind and Bootstrap frameworks. I am
+          well-versed in React.js, Express.js, Node.js, Spring Boot, Fast API,
+          and Flask API frameworks. My database management experience includes
+          MySQL, PostgreSQL, and SQL, complemented by hands-on experience with
+          AWS services such as EC2, S3, DynamoDB, and Lambda.
         </p>
         <div className="w-full">
           <TechTree />
