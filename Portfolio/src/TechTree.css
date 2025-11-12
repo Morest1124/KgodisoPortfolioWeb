@@ -1,0 +1,203 @@
+.tech-tree-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #1a202c;
+}
+
+.tech-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-root {
+  padding: 1rem 2rem;
+  background-color: #2d3748;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tree-root::after {
+  content: "";
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 2rem;
+  background-color: #4a5568;
+  animation: grow-down 0.5s ease-out;
+}
+
+.tree-branches {
+  display: flex;
+  justify-content: center;
+}
+
+.tree-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  position: relative;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.tree-branch::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 2rem;
+  background-color: #4a5568;
+  transform-origin: top;
+  animation: grow-down 0.5s ease-out forwards;
+}
+
+.tree-branch::after {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: -50%;
+  right: -50%;
+  height: 2px;
+  background-color: #4a5568;
+  transform-origin: left;
+  animation: grow-right 0.5s ease-out forwards;
+}
+
+.tree-branch:first-child::after {
+  left: 50%;
+  transform-origin: right;
+}
+
+.tree-branch:last-child::after {
+  right: 50%;
+}
+
+.tree-node-content {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #2d3748;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.tree-leaves {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.tree-leaves::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 2rem;
+  background-color: #4a5568;
+  transform-origin: top;
+  animation: grow-down 0.5s ease-out forwards;
+}
+
+.tree-leaf {
+  margin: 0.5rem 0;
+  position: relative;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.tree-leaf::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -2rem;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2px;
+  background-color: #4a5568;
+  transform-origin: left;
+  animation: grow-right 0.5s ease-out forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes grow-down {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grow-right {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Staggered animations */
+.tree-branch:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.tree-branch:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.tree-branch:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.tree-branch:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.tree-branch:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.tree-leaf {
+  margin: 0.5rem 0;
+  position: relative;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.tree-leaf:nth-child(1) {
+  animation-delay: 1.2s;
+}
+.tree-leaf:nth-child(2) {
+  animation-delay: 1.4s;
+}
+.tree-leaf:nth-child(3) {
+  animation-delay: 1.6s;
+}
+.tree-leaf:nth-child(4) {
+  animation-delay: 1.8s;
+}
+.tree-leaf:nth-child(5) {
+  animation-delay: 2s;
+}
+

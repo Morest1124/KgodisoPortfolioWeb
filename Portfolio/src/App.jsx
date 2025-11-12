@@ -14,6 +14,7 @@ import {
   LayoutGrid,
   Zap,
 } from "lucide-react";
+import TechTree from "./TechTree";
 
 // --- Static Data Configuration ---
 const DATA = {
@@ -235,35 +236,23 @@ const AboutPage = () => (
       <h2 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 border-b-4 border-emerald-500/50 inline-block pb-1">
         About Me & Skills
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-10">
-        <div className="lg:col-span-1">
-          <div className="w-full aspect-square bg-gray-700 rounded-xl mb-6 flex items-center justify-center text-gray-500 text-lg shadow-xl">
+      <div className="mt-10 flex flex-col items-center justify-center">
+        <div className="w-full max-w-2xl">
+          <div className="w-full aspect-square bg-gray-700 rounded-xl mb-6 flex items-center justify-center text-gray-500 text-lg shadow-xl max-w-sm mx-auto">
             <User className="w-16 h-16 text-emerald-500" />
           </div>
-          <h3 className="text-2xl font-bold text-white mb-3">
+          <h3 className="text-2xl font-bold text-white mb-3 text-center">
             A Focus on Scalability
           </h3>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-center">
             I thrive on creating solutions that are not just functional, but
             also highly scalable and maintainable. My experience spans the
             entire development lifecycle, ensuring quality from initial design
             to final deployment on AWS.
           </p>
         </div>
-        <div className="lg:col-span-2">
-          <h3 className="text-3xl font-bold text-white mb-8">
-            My Expertise Stack
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {DATA.skills.map((skill, index) => (
-              <SkillIcon
-                key={index}
-                icon={skill.icon}
-                title={skill.category}
-                items={skill.items}
-              />
-            ))}
-          </div>
+        <div className="mt-12 w-full">
+          <TechTree />
         </div>
       </div>
     </div>
