@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "imports": {
+    "@tailwindcss/vite": "./scripts/tailwind-vite-shim.mjs"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
